@@ -1,0 +1,68 @@
+show databases;
+-> show all the available databases in the system
+
+create databases <file_name>;
+-> creates a new database
+
+use <file_name>;
+-> start working on the database
+
+drop database <file_name>;
+-> delete the database
+
+show tables;
+-> to show all tables in a particular database 
+
+--> to create a tables
+create table <file_name>(
+    title VARCHAR(30)   
+      |      |     |
+ attribute  type  maxLength
+    VARCHAR == string
+
+    id Int
+    content VARCHAR(300)
+)
+
+desc <file_name>;
+-> list of attributes of table
+
+not null
+-> used in creating table attributes whose values can never be null
+
+auto_increment
+-> automatically increments the value by 1 
+also we have to give a primary key so that it could recognize it
+ex - Id Int auto_increment
+    primary key(Id);
+
+--> Insert in table
+insert into <file_name> (title,id, content) values (val1,val2,val3);
+// if we want to put multiple inputs at same time -> 
+insert into <file_name> (title,id, content) values (val1,val2,val3),(val1,val2,val3);
+
+--> Retreive data from tables
+select <attr1>,<attr2>... from <file_name>;
+// for getting all attributes
+select * from <file_name>;
+// for getting chosen data      --> where clause
+select * from <file_name> WHERE id > 2;  -> it will give me only that rows whose data had id attribute greater than 2.
+// for getting data with operating with strings   --> like clause
+select * from <file_name> where <attr> LIKE "%string%";
+ex - select * from <file_name> where title LIKE "abc%";  // it gives all the rows with data having title whose prefix matches with abc and after that it can have anything
+
+// we can also use AND ,OR operator with where clause
+
+
+--> sorting of data
+select * from <file_name> order by <attr> (DESC or ASC);
+// we can also put another condition in case of conflict in first condition
+select * from <file_name> order by <attr1> (DESC or ASC), <attr2> (DESC or ASC);
+// we can also put limit on data to be shown 
+select * from <file_name> order by <attr> desc LIMIT 2;
+// we can also choose how many previous data we have to leave
+select * from <file_name> order by <attr> desc limit 2 OFFSET 2;
+
+--> update data
+UPADTE <file_name> set <attr> = " ... " where <attr> = " ... ";
+
