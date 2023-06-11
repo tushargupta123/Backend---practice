@@ -66,3 +66,18 @@ select * from <file_name> order by <attr> desc limit 2 OFFSET 2;
 --> update data
 UPADTE <file_name> set <attr> = " ... " where <attr> = " ... ";
 
+--> add new column
+ALTER table <file_name> ADD <attr_name> <attr_type>;
+
+--> delete column 
+ALTER table <file_name> DROP <attr_name>;
+
+--> we can join two different tables with same key 
+select * from <file_name> JOIN <file_name> ON file1.key = file2.key;
+
+
+
+
+----> ORM
+Object Relatinal mapper
+libraries that helps you to actually do database queries but instead write sql system you write object oriented system

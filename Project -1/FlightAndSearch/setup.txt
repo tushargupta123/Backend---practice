@@ -1,0 +1,14 @@
+npm i sequelize sequelize-cli mysql2
+npm init in root folder
+bring every folder inside src folder
+configure config.json
+cd src
+npx sequelize db:create
+put config.json in .env
+
+To create a table 
+--> npx sequelize model:generate --name City --attributes name:String  
+--> npx sequelize db:migrate
+
+To interact with the database(model)
+--> create new file inside repository folder.
