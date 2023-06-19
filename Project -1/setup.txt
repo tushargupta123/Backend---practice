@@ -36,3 +36,6 @@ Seeders -> it is used to give initial value to some attributes
 --> npx sequelize seed:generate --name add-airports
 after adding seed data
 --> npx sequelize db:seed:all
+
+If we want to add new fields in existing migration
+--> npx sequelize migration:create --name add_new_fields
