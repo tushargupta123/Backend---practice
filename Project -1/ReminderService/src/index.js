@@ -6,10 +6,12 @@ const {PORT} = require('./config/serverConfig');
 
 const {sendBasicEmail} = require('./services/email-service');
 const jobs = require('./utils/job');
-
-const {createChannel} = require('./utils/messageQueue')
-
 const TicketController = require('./controllers/ticket-controller');
+
+const {subscribeMessage,createChannel} = require('./utils/messageQueue');
+const {REMINDER_BINDING_KEY} = require('./config/serverConfig');
+
+const EmailService = require('./services/email-service');
 
 const setupAndStartServer = async() => {
     app.use(bodyParser.json());
@@ -18,10 +20,12 @@ const setupAndStartServer = async() => {
     app.post('/api/v1/tickets',TicketController.create);
 
     const channel = await createChannel();
+    subscribeMessage(channel,EmailService,REMINDER_BINDING_KEY)
 
     app.listen(PORT,() => {
         console.log('Server started on port '+PORT);
-        jobs();
+
+        // jobs();
 
         // sendBasicEmail(
         //     'support@admin.com',
