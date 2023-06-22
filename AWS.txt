@@ -1,0 +1,10 @@
+create an EC2 instance
+
+open termial 
+-> chmod 700 awskey.pem
+-> ssh -v -i awskey.pem ubuntu@<Public IPv4 address>
+-> install node on ec2 machine
+-> clone repo
+-> npm i (install pm2 also in repo)	(pm2 helps in running server even after terminal is closed)
+-> npx pm2 start index.js	(to start)
+-> npx pm2 stop index.js	(to stop)
