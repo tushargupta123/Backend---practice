@@ -9,8 +9,12 @@ class TweetRepository extends CrudRepository{
 
     async getWithComments(id){
         try {
-            const tweet = await Tweet.findById(id).populate({
-                path:'comments'
+            const tweet = await Tweet.findById(id)
+            .populate({
+                path:'comments',
+                populate:{
+                    path: 'comments'
+                }
             }).lean();         // populate means instead of printing objectId print whole object       , lean gets normal object instead of mongoose object
             return tweet;
         } catch (error) {
