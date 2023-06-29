@@ -17,7 +17,7 @@ const tweetSchema = new mongoose.Schema({
             ref:'Comment'
         }
     ],
-    images:{
+    image:{
             type:String
         }
 }, {timestamps: true});
