@@ -1,13 +1,13 @@
-const HotelService = require("../services/Hotels");
+const BookingService = require("../services/Booking");
 
-const hotelService = new HotelService();
+const bookingService = new BookingService();
 
 exports.create = async(req,res) => {
     try {
-        const response = await hotelService.create(req.body);
+        const response = await bookingService.create(req.body);
         return res.status(201).json({
             success: true,
-            message: 'successfully created a hotel',
+            message: 'successfully created a booking',
             data: response,
             err: {}
         })
@@ -23,10 +23,10 @@ exports.create = async(req,res) => {
 }
 exports.update = async(req,res) => {
     try {
-        const response = await hotelService.update(req.params.id, req.body);
+        const response = await bookingService.update(req.params.id, req.body);
         return res.status(200).json({
             success: true,
-            message: 'successfully update a hotel',
+            message: 'successfully updated a booking',
             data: response,
             err: {}
         })
@@ -40,12 +40,12 @@ exports.update = async(req,res) => {
         })
     }
 }
-exports.getAll = async(req,res) => {
+exports.getById = async(req,res) => {
     try {
-        const response = await hotelService.getAll(req.query);
+        const response = await bookingService.getById(req.params.id);
         return res.status(200).json({
             success: true,
-            message: 'successfully fetched all hotels',
+            message: 'successfully fetched the booking',
             data: response,
             err: {}
         })
@@ -58,30 +58,12 @@ exports.getAll = async(req,res) => {
         })
     }
 }
-exports.makeComment = async(req,res) => {
+exports.destroy = async(req,res) => {
     try {
-        const response = await hotelService.makeComment(req.body);
+        const response = await bookingService.destroy(req.params.id);
         return res.status(200).json({
             success: true,
-            message: 'successfully commented on hotel',
-            data: response,
-            err: {}
-        })
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: 'somthing went wrong',
-            data: {},
-            err: error
-        })
-    }
-}
-exports.rate = async(req,res) => {
-    try {
-        const response = await hotelService.rate(req.body);
-        return res.status(200).json({
-            success: true,
-            message: 'successfully reated on hotel',
+            message: 'successfully deleted the booking',
             data: response,
             err: {}
         })
