@@ -45,13 +45,7 @@ class BookingService {
     }
     async destroy(data){
         try{
-            // await bookingRepository.destroy(data);
-            const booking = await bookingRepository.getById(data);
-            console.log(booking.hotel.availability)
-            // const hotel = await Hotel.findById(data.hotel);
-            //     hotel.availability.set(convertedDateFrom,hotel.availability.get(convertedDateFrom)+1)
-            //     hotel.availability.set(convertedDateTo,hotel.availability.get(convertedDateTo)+1)
-            //     await hotel.save();
+            await bookingRepository.destroy(data);
         }catch(e){
             console.log("error from booking service");
             throw e;
