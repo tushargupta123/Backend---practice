@@ -11,8 +11,8 @@ async function main(){
     await mongoose.connect('mongodb+srv://tushargupta2k3:tUshar%40123@twitter.fzbvq5v.mongodb.net/auth');
 }
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
 
 
 
@@ -44,7 +44,7 @@ app.get('/',authenticate,(req,res)=>{
 app.use('/user',userRoutes)
 
 main().catch(err => console.log(err))
-app.listen('3000',() => {
+app.listen('8080',() => {
     console.log("server started on port 3000");
     main();
     console.log("mongodb connected");
