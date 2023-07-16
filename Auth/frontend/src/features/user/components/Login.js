@@ -1,21 +1,27 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
-import { fetchToken, loginSlice } from "../userSlice";
+import React, {  useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { loginSlice } from "../userSlice";
 
 const Login = () => {
-    const dispatch = useDispatch();
-    const [email,setEmail] = useState();
-    const [password,setPassword] = useState();
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(loginSlice({email,password}));
-    }
-    const token = useSelector(fetchToken);
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginSlice({ email, password }));
+    setTimeout(() => {
+      if(localStorage.getItem("token") && localStorage.getItem("token") !== "[object Object]"){
+        navigate('/')
+      }else{
+        alert("Wrong credentials")
+      }
+    },[1000])
+  };
 
   return (
     <div>
-    {token && <Navigate to="/"></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -60,12 +66,11 @@ const Login = () => {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
-                    href="#"
+                  <Link to="/forgot-password"
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
@@ -94,7 +99,8 @@ const Login = () => {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
-            <Link to ="/signup"
+            <Link
+              to="/signup"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Create a new account

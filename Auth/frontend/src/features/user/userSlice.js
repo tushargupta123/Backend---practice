@@ -32,6 +32,7 @@ export const userSlice = createSlice({
       .addCase(signupSlice.fulfilled, (state, action) => {
         state.status = 'idle';
         state.token = action.payload;
+        localStorage.setItem('token', state.token);
       })
       .addCase(loginSlice.pending, (state) => {
         state.status = 'loading';
@@ -39,10 +40,9 @@ export const userSlice = createSlice({
       .addCase(loginSlice.fulfilled, (state, action) => {
         state.status = 'idle';
         state.token = action.payload;
+        localStorage.setItem('token', state.token);
       })
   },
 });
-
-export const fetchToken = (state) => state.user.token;
 
 export default userSlice.reducer;

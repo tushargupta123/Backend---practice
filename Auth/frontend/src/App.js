@@ -3,6 +3,7 @@ import Protected from './Protected';
 import Login from './features/user/components/Login';
 import Home from './Home';
 import Signup from './features/user/components/Signup';
+import ForgotPassword from './features/user/components/ForgotPassword';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="/forgot-password" element={<ForgotPassword/>}/>
       <Route path="/" element={<Protected><Home/></Protected>}/>
     </Routes>
     </BrowserRouter>

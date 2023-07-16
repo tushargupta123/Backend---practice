@@ -7,12 +7,14 @@ const passport = require('passport');
 const JWT = require('passport-jwt');
 const { User } = require('./models/User');
 const { authenticate } = require('./middleware/authenticate');
+const cors = require('cors');
 async function main(){
     await mongoose.connect('mongodb+srv://tushargupta2k3:tUshar%40123@twitter.fzbvq5v.mongodb.net/auth');
 }
 
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 
 
@@ -45,7 +47,7 @@ app.use('/user',userRoutes)
 
 main().catch(err => console.log(err))
 app.listen('8080',() => {
-    console.log("server started on port 3000");
+    console.log("server started on port 8080");
     main();
     console.log("mongodb connected");
 })
