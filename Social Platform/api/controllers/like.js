@@ -23,7 +23,7 @@ export const addLike = (req, res) => {
             return res.status(401).json("unauthorized");
         }
 
-        const q = "INSERT INTO likes (`userId`,`postId`) VALUES (?)";
+        const q = "INSERT INTO likes (`userId`,`postId`) VALUES (?,?)";
 
         const values = [
             userInfo.id,

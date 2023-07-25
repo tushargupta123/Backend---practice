@@ -24,7 +24,7 @@ export const addComment = (req,res) => {
             return res.status(401).json("unauthorized");
         }
 
-        const q = "INSERT INTO comments (`desc`,`createdAt`,`userId`,`postId`) VALUES (?)";
+        const q = "INSERT INTO comments (`desc`,`createdAt`,`userId`,`postId`) VALUES (?,?,?,?)";
 
         const values = [
             req.body.desc,

@@ -39,6 +39,6 @@ app.post('/api/upload',upload.single("file"),(req,res) => {
     res.status(200).json(file.filename);
 })
 
-app.listen(8080, () => {
-    console.log("server started on port 8080");
+app.listen(8800, () => {
+    console.log("server started on port 8800");
 })
