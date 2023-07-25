@@ -77,7 +77,36 @@ select * from <file_name> JOIN <file_name> ON file1.key = file2.key;
 
 
 
-
 ----> ORM
 Object Relatinal mapper
 libraries that helps you to actually do database queries but instead write sql system you write object oriented system
+
+
+
+
+
+
+
+
+-- COMMANDS USED IN SOCIAL PROJECT
+
+->  create table users(id INT AUTO_INCREMENT PRIMARY KEY NOT NULL , username VARCHAR(45) NOT NULL, email VARCHAR(45) NOT NULL, password VARCHAR(200) NOT NULL, name VARCHAR(45) NOT NULL, coverPic VARCHAR(100), profilePic VARCHAR(100), city VARCHAR(45), website VARCHAR(45));
+
+-> ALTER TABLE users MODIFY COLUMN id INT UNIQUE AUTO_INCREMENT;
+// used when i forgot to enter unique in id attribute
+// we have to also mention datatype of that attribute else it will throw error
+
+-> CREATE TABLE posts (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    description VARCHAR(200),
+    img VARCHAR(200),
+    userId INT,
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+// here i have attached userId as foreign key to id in users table and also added cascading.
+
+-> SELECT p.*, u.id AS userId,name,profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userId) JOIN relations AS r ON (p.userId = r.followedUserId AND r.followerUserId = ?
+// we are using posts as p and users as u and then we join tables for data where condition matches . also here we selected all from p and only specific things from users table and then we joined another table where we are are checking for both should follow each other
+
+-> ALTER TABLE posts CHANGE COLUMN `description` `desc` VARCHAR(200);
+// changed field name from description to desc
